@@ -11,7 +11,7 @@ const fs = require('node:fs');
 const publicVapidKey = "BOd2EQ8LTe3KAgMX9lWwTlHTRzv1Iantw50Mw6pUnsNr3pcxl8iglUs-YlQEQLo4UbJk9oyXs_BxgyAe0TCqKME";
 const privateVapidKey = "4AoSsRHFaHv0Fupd2NRtrungJF2jkqgccTu-WEc781w";
 webpush.setVapidDetails("mailto:test@test.com", publicVapidKey, privateVapidKey);
-const storagePath = 'storage/subscribers';
+const storagePath = '.storage/subscribers';
 const payload = JSON.stringify({ title: "Hello World", body: "Notif panda" });
 
 
