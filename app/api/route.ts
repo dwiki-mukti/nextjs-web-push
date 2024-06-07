@@ -1,5 +1,5 @@
 const webpush = require('web-push');
-const fs = require('node:fs');
+// const fs = require('node:fs');
 
 
 
@@ -21,19 +21,19 @@ const payload = JSON.stringify({ title: "Hello World", body: "Notif panda" });
  * Utilities
  * ====================================
  */
-function addNewSubscriber(newSubscriber: any) {
-    const prev = getSubscriber();
-    fs.writeFileSync(storagePath, JSON.stringify([...prev, newSubscriber]));
-}
+// function addNewSubscriber(newSubscriber: any) {
+//     const prev = getSubscriber();
+//     fs.writeFileSync(storagePath, JSON.stringify([...prev, newSubscriber]));
+// }
 
 
-function getSubscriber() {
-    try {
-        const fileContent = fs.readFileSync(storagePath);
-        return JSON.parse(fileContent);
-    } catch (error) { }
-    return [];
-}
+// function getSubscriber() {
+//     try {
+//         const fileContent = fs.readFileSync(storagePath);
+//         return JSON.parse(fileContent);
+//     } catch (error) { }
+//     return [];
+// }
 
 
 
@@ -42,22 +42,22 @@ function getSubscriber() {
  * Request handler
  * ====================================
  */
-export async function GET() {
-    const subscribers = getSubscriber();
+// export async function GET() {
+//     const subscribers = getSubscriber();
 
-    for (const subscriber of subscribers) {
-        await webpush.sendNotification(subscriber, payload);
-    }
+//     for (const subscriber of subscribers) {
+//         await webpush.sendNotification(subscriber, payload);
+//     }
 
-    return Response.json({
-        ping: 'pong'
-    })
-}
+//     return Response.json({
+//         ping: 'pong'
+//     })
+// }
 
 
 export async function POST(request: Request) {
     const subscription = await request.json();
-    addNewSubscriber(subscription);
+    // addNewSubscriber(subscription);
 
     await webpush.sendNotification(subscription, payload);
 
